@@ -83,15 +83,14 @@ var start = function(percievedActions) {
 	
 	if(playback) {
 		recordings = loadRecordings();
-		setMap(1,1);
+		setMap(8,4);
 		initialTimestamp = getMicrotime(true);
 		playAll();
 		// return;
 	} else {
-		setMap(1,1);
+		setMap(8,4);
 		initialTimestamp = getMicrotime(true);
 	}
-
 
 	fitness        = 0;
 	currentscore   = 0;
@@ -119,7 +118,8 @@ var start = function(percievedActions) {
 	}
 
 	var compiledGeneration = compileGeneratedActions(percievedActions);
-	startLoop(compiledGeneration);
+	// startLoop(compiledGeneration);
+	setTimeout(function(){startLoop(compiledGeneration);}, 1000);
 }
 
 var compileGeneratedActions = function(generateActions) {
@@ -188,6 +188,7 @@ var getColorBySymbol = function(symbol) {
 }
 
 var startLoop = function(percievedActions, machine) {
+	// console.log(1)
 	// console.clear();
 	clearXCanvas();
 
@@ -203,6 +204,10 @@ var startLoop = function(percievedActions, machine) {
 	var pipes = {};
 	var marioCenter = getCenterMario();
 	var jumptime = 0;
+	
+	if(marioCenter['x'] == undefined) {
+		marioCenter = {x:0,y:0};
+	}
 
 	for (var y = 1; y <= perimeter; y++) {
 		for (var x = 1; x <= perimeter; x++) {

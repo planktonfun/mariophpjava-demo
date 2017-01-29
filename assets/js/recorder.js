@@ -1,4 +1,4 @@
-var limiters   = false;
+var limiters   = true;
 var playback   = false;
 var playiteration = 0;
 var recordings = {};

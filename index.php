@@ -20,6 +20,7 @@
     <script type="text/javascript" src="/assets/js/initials.js"></script>
     <script type="text/javascript" src="/assets/js/gene.js"></script>
     <script type="text/javascript" src="/assets/js/population.js"></script>
+    <script type="text/javascript" src="/assets/js/recorder.js"></script>
     <script type="text/javascript" src="/assets/js/mario.js"></script>
     
     <script src="./Super Mario Bros in HTML5_files/data.js.download"></script>

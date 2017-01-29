@@ -11,6 +11,10 @@ var perimeter = 13;
 var perceptron = null;
 var learningRate = .12;
 
+// recordings
+var limiters = true;
+var playback = false;
+
 // All the actions mario can do
 var actions = [
 	1, // keydown(65) left
@@ -22,7 +26,7 @@ var actions = [
 ];
 
 // Frames Per Second
-var fpsstart = 30;
+var fpsstart = 1000;
 
 // Fitness
 var fitness  = 0;

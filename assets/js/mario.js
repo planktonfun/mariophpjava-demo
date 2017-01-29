@@ -79,6 +79,19 @@ function drawBlock(x,y,color) {
 }
 
 var start = function(percievedActions) {
+	recordings     = [];
+	
+	if(playback) {
+		recordings = loadRecordings();
+		setMap(1,1);
+		initialTimestamp = getMicrotime(true);
+		playAll();
+		// return;
+	} else {
+		setMap(1,1);
+		initialTimestamp = getMicrotime(true);
+	}
+
 
 	fitness        = 0;
 	currentscore   = 0;
@@ -249,7 +262,7 @@ var startLoop = function(percievedActions, machine) {
 		execute(0);
 	} else {
 		$.each(collectedActions, function(action) {
-			console.log('----->' + action + '<-----');
+			// console.log('----->' + action + '<-----');
 
 			timeout = 0;
 
@@ -307,8 +320,8 @@ var startLoop = function(percievedActions, machine) {
 		mapReset = true;
 	}
 
-	if(mapReset) {
-		console.log(1);
+	if(mapReset && limiters) {
+		// console.log(1);
 		$.post('/setTestCase.php', {
 			cost: fitness,
 			code: rawActions
@@ -316,13 +329,19 @@ var startLoop = function(percievedActions, machine) {
 			location.href = location.href;
 		});
 	} else {
-		console.log(2);
+		// console.log(2);
+		// console.log(recorded);
 		setTimeout(function(){startLoop(percievedActions, machine);}, 1000/fpsstart);
 	}
 }
 
 var jumpenabled = true;
 var execute = function(action, timeout) {
+
+	if(!limiters) {
+		return false;
+	}
+
 	switch(action) {
 		case '1':
 			// console.log('action');
